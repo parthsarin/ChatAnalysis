@@ -36,22 +36,34 @@ def analyze_person(k, filename):
 
 	# Analyze data
 	messages_from_other, messages_from_parth = au.analyze_sender_frequency(messages)
+	avg_len_other, avg_len_parth = au.analyze_length(messages)
 	other_words, parth_words = au.analyze_word_frequency(messages)
 	emojis_from_other, emojis_from_parth = au.analyze_emoji_frequency(messages)
 
 	# Print data
+	name = PEOPLE[k].name
 	print("Number of messages:")
-	ioutils.print_num_messages((PEOPLE[k].name, messages_from_other), ('Parth', messages_from_parth))
+	ioutils.print_num((name, messages_from_other), ('Parth', messages_from_parth))
+
+	print()
+
+	print("Average number of words per message:")
+	ioutils.print_num((name, avg_len_other.words), ('Parth', avg_len_parth.words))
+
+	print()
+
+	print("Average number of characters per message:")
+	ioutils.print_num((name, avg_len_other.chars), ('Parth', avg_len_parth.chars))
 
 	print()
 
 	print("Most common words:")
-	ioutils.print_most_common((PEOPLE[k].name, other_words), ('Parth', parth_words), 20)
+	ioutils.print_most_common((name, other_words), ('Parth', parth_words), 20)
 
 	print()
 
 	print("Most common emojis:")
-	ioutils.print_most_common((PEOPLE[k].name, emojis_from_other), ("Parth", emojis_from_parth), 20)
+	ioutils.print_most_common((name, emojis_from_other), ("Parth", emojis_from_parth), 20)
 
 def main():
 	to_analyze = sys.argv[1:]

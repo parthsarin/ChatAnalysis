@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
-def print_num_messages(person1, person2):
-	"""Prettily print the number of messages that each
+def print_num(person1, person2):
+	"""Prettily print the number of some category that each
 	person has sent to the other.
 
 	:type person1: ( str, int )
